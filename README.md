@@ -1,5 +1,6 @@
 # README
 
-# Testing
-- [guard](https://github.com/guard/guard)
-- [guard-rspec](https://github.com/guard/guard-rspec)
+# GEMS
+- [devise](https://github.com/heartcombo/devise) for user authentication
+- [guard](https://github.com/guard/guard) for testing
+- [guard-rspec](https://github.com/guard/guard-rspec) for testing
