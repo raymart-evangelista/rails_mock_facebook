@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   authenticated :user do
-    root "post#index", as: :authenticated_root
+    root "posts#index", as: :authenticated_root
   end
 
   root "static_pages#home"
