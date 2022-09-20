@@ -61,18 +61,13 @@ FriendRequest.create!([{
   receiver_id: 1
 }])
 
-# Friendship.create!([{
-#   friend_a: 1,
-#   friend_b: 6
-# },
-# {
-#   friend_a: 5,
-#   friend_b: 1
-# }])
-
 Friendship.create!([{
   friend_a_id: 1,
   friend_b_id: 6
+},
+{
+  friend_a_id: 5,
+  friend_b_id: 1
 }])
 
 p "Created #{User.count} users"

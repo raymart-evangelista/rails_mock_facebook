@@ -7,13 +7,16 @@ class User < ApplicationRecord
   # has_many :friendship_list, foreign_key: :user_id, class_name: "Friendship"
   # has_many :friends, through: :friendship_list
 
-  has_many :friendships, ->(user) { where("friend_a_id = ? OR friend_b_id = ?", user.id, user.id) }
-  has_many :friends, through: :friendships
+  has_many :friendship_list, foreign_key: :friend_a_id, class_name: :Friendship
+  has_many :friends, through: :friendship_list
+  # has_many :friendships, ->(user) { where("friend_a_id = ? OR friend_b_id = ?", user.id, user.id) }
+  # has_many :friends, through: :friendships
 
   has_many :friend_requests_as_requestor, foreign_key: :requestor_id, class_name: :FriendRequest
   has_many :friend_requests_as_receiver, foreign_key: :receiver_id, class_name: :FriendRequest
 
   # scope, add a new friend where Users not in friends and not current user
+
   def addable_users
     User.where.not(id: self.friends.ids.push(self.id))
   end
