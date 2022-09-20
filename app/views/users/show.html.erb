@@ -22,7 +22,7 @@
   <% @user.friend_requests_as_requestor.each do |request| %>
     <li>
       <%= request.receiver.first_name %> <%= request.receiver.last_name %>
-      <%#= person.first_name %> <%#= person.last_name %> <button>Requested</button>
+      <%#= person.first_name %> <%#= person.last_name %> <button>Cancel Request</button>
     </li>
   <% end %>
   <h3>Received</h3>
