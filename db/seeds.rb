@@ -5,7 +5,6 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-
 User.create!([{
   username: "mwalker",
   first_name: "Muhamed",
@@ -49,15 +48,33 @@ User.create!([{
   password: "password"
 }])
 
-Friendship.create!([{
-  user_id: 1,
-  friend_id: 2
+FriendRequest.create!([{
+  requestor_id: 1,
+  receiver_id: 2
 },
 {
-  user_id: 1,
-  friend_id: 3
+  requestor_id: 1,
+  receiver_id: 3
+},
+{
+  requestor_id: 4,
+  receiver_id: 1
+},
+{
+  requestor_id: 5,
+  receiver_id: 1
 }])
 
-p "Created #{User.count} users"
 
-p "Created #{Friendship.count} friendship objects"
+# Friendship.create!([{
+#   user_id: 1,
+#   friend_id: 2
+# },
+# {
+#   user_id: 1,
+#   friend_id: 3
+# }])
+
+p "Created #{User.count} users"
+p "Created #{FriendRequest.count} friend requests"
+# p "Created #{Friendship.count} friendship objects"
