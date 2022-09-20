@@ -1,17 +1,37 @@
 <div>
   <h2>Add a new friend</h2>
-  <% @addable_friends.each do |person| %>
+  <%# @addable_friends.each do |person| %>
     <li>
-      <%= person.first_name %> <%= person.last_name %>
+      <%#= person.first_name %> <%#= person.last_name %>
     </li>
-  <% end %>
+  <%# end %>
 </div>
 <h2>These are pending friend requests you sent</h2>
 <div>
   <h2>These are all your friends</h2>
-  <% @user.friends.each do |friend| %>
+  <%# @user.friends.each do |friend| %>
     <li>
-      <%= friend.first_name %> <%= friend.last_name %>
+      <%#= friend.first_name %> <%#= friend.last_name %>
+    </li>
+  <%# end %>
+</div>
+
+<div>
+  <h2>Friend Requests</h2>
+  <h3>Sent</h3>
+  <% @user.friend_requests_as_requestor.each do |request| %>
+    <li>
+      <%= request.receiver.first_name %> <%= request.receiver.last_name %>
+      <%#= person.first_name %> <%#= person.last_name %> <button>Requested</button>
     </li>
   <% end %>
+  <h3>Received</h3>
+  <% @user.friend_requests_as_receiver.each do |request| %>
+    <li>
+      <%= request.requestor.first_name %> <%= request.requestor.last_name %>
+      <button>Accept</button>
+      <button>Decline</button>
+    </li>
+  <% end %>
+  
 </div>
