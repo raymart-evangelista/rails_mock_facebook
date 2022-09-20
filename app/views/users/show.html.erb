@@ -1,2 +1,17 @@
+<div>
+  <h2>Add a new friend</h2>
+  <% @addable_friends.each do |person| %>
+    <li>
+      <%= person.first_name %> <%= person.last_name %>
+    </li>
+  <% end %>
+</div>
 <h2>These are pending friend requests you sent</h2>
-<h2>These are all your friends</h2>
+<div>
+  <h2>These are all your friends</h2>
+  <% @user.friends.each do |friend| %>
+    <li>
+      <%= friend.first_name %> <%= friend.last_name %>
+    </li>
+  <% end %>
+</div>

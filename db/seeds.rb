@@ -35,4 +35,15 @@ User.create!([{
   password: "password"
 }])
 
+Friendship.create!([{
+  user_id: 1,
+  friend_id: 2
+},
+{
+  user_id: 1,
+  friend_id: 3
+}])
+
 p "Created #{User.count} users"
+
+p "Created #{Friendship.count} friendship objects"
