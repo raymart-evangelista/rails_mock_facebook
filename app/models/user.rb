@@ -8,8 +8,6 @@ class User < ApplicationRecord
   has_many :friends, through: :friendship_list
 
   # scope, add a new friend where Users not in friends and not current user
-  scope :addable, -> { where.not(id: self.friends.ids.push(self.id)) }
-
   def addable_users
     User.where.not(id: self.friends.ids.push(self.id))
   end

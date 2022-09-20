@@ -33,6 +33,20 @@ User.create!([{
   last_name: "Leal",
   email: "isabellleal@gmail.com",
   password: "password"
+},
+{
+  username: "kfinney",
+  first_name: "Konrad",
+  last_name: "Finney",
+  email: "kfinney@gmail.com",
+  password: "password"
+},
+{
+  username: "sfranco",
+  first_name: "Salman",
+  last_name: "Franco",
+  email: "sfranco@gmail.com",
+  password: "password"
 }])
 
 Friendship.create!([{
