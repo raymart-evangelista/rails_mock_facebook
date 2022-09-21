@@ -17,12 +17,21 @@ class User < ApplicationRecord
     Friendship.where("friend_a_id = ? OR friend_b_id = ?", self.id, self.id)
   end
 
-  def addable_friends
+  def unaddable_ids
     # an addable friend is someone who meets the following criteria:
       # - the addable friend is not a current friend
       # - the addable friend is not in friend requests
         # - specifically, the addable friend is not a requestor
         # - specifically, the addable friend is not a receiver
+    curr_friend_ids = friends.pluck(:friend_a_id) + friends.pluck(:friend_b_id)
+    curr_friend_requests = friend_requests_as_requestor.pluck(:receiver_id) + friend_requests_as_receiver.pluck(:requestor_id)
+    unaddable = curr_friend_ids + curr_friend_requests
+    unaddable.delete(self.id)
+    unaddable
+  end
+
+  def addable_friends
+    User.where.not(id: self.unaddable_ids << self.id)
   end
 
   # has_many :friendships, foreign_key: :friend_a_id, class_name: :Friendship

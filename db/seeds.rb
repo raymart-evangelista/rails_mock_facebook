@@ -46,6 +46,13 @@ User.create!([{
   last_name: "Franco",
   email: "sfranco@gmail.com",
   password: "password"
+},
+{
+  username: "mbush",
+  first_name: "Mollie",
+  last_name: "Bush",
+  email: "mbush@gmail.com",
+  password: "password"
 }])
 
 FriendRequest.create!([{
