@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   # before_action :set_user, only: [:show, :toggle_add_friend]
+  before_action :authenticate_user!
   def show
     # binding.pry
     @user = User.find_by(username: params[:username])
