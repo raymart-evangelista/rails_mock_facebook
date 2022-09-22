@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  get ':username', to: 'users#show', as: :user
+  # get ':username', to: 'users#show', as: :user
+
+  devise_for :users
 
   resources :users do
     member do
@@ -7,7 +9,7 @@ Rails.application.routes.draw do
     end
   end
   # resources :users, only: [:show]
-  devise_for :users
+  # devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
