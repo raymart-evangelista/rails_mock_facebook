@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  # resources :users, param: :username, only: [:show]
   get ':username', to: 'users#show', as: :user
-  # resources :users, param: :username, only [:show]
+  # resources :users, param: :username, as: :user
 
   devise_for :users
 

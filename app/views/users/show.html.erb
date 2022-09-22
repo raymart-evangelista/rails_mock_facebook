@@ -1,5 +1,15 @@
+<% if @user == current_user %>
+  <%= render "friend_actions" %>
+<% end %>
+
+
 <div>
-  <h2><%= @user.first_name %> <%= @user.last_name %>'s friends</h2>
+  
+  <% if @user == current_user %>
+    <h2>Your friends</h2>
+  <% else %>
+    <h2><%= @user.first_name %> <%= @user.last_name %>'s friends</h2>
+  <% end %>
   <% @user.friends.each do |friendship| %>
     <li>
       <% if friendship.friend_a.id == @user.id %>
