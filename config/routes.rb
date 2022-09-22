@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   get ':username', to: 'users#show', as: :user
+
+  resources :users do
+    member do
+      get :toggle_add_friend
+    end
+  end
   # resources :users, only: [:show]
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

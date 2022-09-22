@@ -2,7 +2,7 @@
   <h2>Add a new friend</h2>
   <% @user.addable_friends.each do |person| %>
     <li>
-      <%= person.first_name %> <%= person.last_name %>
+      <%= person.first_name %> <%= person.last_name %> <%= button_to "Add Friend", toggle_add_friend_user_path(person.id), method: :get %>
     </li>
   <% end %>
 </div>
