@@ -25,8 +25,8 @@
   <% @user.friend_requests_as_receiver.each do |request| %>
     <li>
       <%= request.requestor.first_name %> <%= request.requestor.last_name %>
-      <button>Accept</button>
-      <button>Decline</button>
+      <%= button_to "Accept", accept_received_request_user_path(request.requestor.username), form: {style: 'display:inline-block;'}, method: :get %>
+      <%= button_to "Decline", decline_received_request_user_path(request.requestor.username), form: {style: 'display:inline-block;'}, method: :get %>
     </li>
   <% end %>
   

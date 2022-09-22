@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     member do
       get :send_friend_request
       get :cancel_friend_request
+      get :accept_received_request
+      get :decline_received_request
     end
   end
 
