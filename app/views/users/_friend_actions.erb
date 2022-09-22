@@ -3,7 +3,7 @@
     <h2>Add a new friend</h2>
     <% @user.addable_friends.each do |person| %>
       <li>
-        <%= person.first_name %> <%= person.last_name %> <%= button_to "Add Friend", toggle_add_friend_user_path(person.username), method: :get %>
+        <%= person.first_name %> <%= person.last_name %> <%= button_to "Add Friend", send_friend_request_user_path(person.username), form: {style: 'display:inline-block;'}, method: :get %>
       </li>
     <% end %>
   </div>
@@ -17,7 +17,8 @@
   <% @user.friend_requests_as_requestor.each do |request| %>
     <li>
       <%= request.receiver.first_name %> <%= request.receiver.last_name %>
-      <%#= person.first_name %> <%#= person.last_name %> <button>Cancel Request</button>
+      <%= button_to "Cancel Request", cancel_friend_request_user_path(request.receiver.username), form: {style: 'display:inline-block;'}, method: :get %>
+      
     </li>
   <% end %>
   <h3>Received</h3>

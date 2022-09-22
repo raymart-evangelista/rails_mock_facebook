@@ -7,7 +7,8 @@ Rails.application.routes.draw do
 
   resources :users do
     member do
-      get :toggle_add_friend
+      get :send_friend_request
+      get :cancel_friend_request
     end
   end
 
