@@ -1,0 +1,41 @@
+<div>
+  <h2>Add a new friend</h2>
+  <% @user.addable_friends.each do |person| %>
+    <li>
+      <%= person.first_name %> <%= person.last_name %> <%= button_to "Add Friend", toggle_add_friend_user_path(person), method: :get %>
+    </li>
+  <% end %>
+</div>
+<h2>These are pending friend requests you sent</h2>
+<div>
+  <h2>These are all your friends</h2>
+  <% @user.friends.each do |friendship| %>
+    <li>
+      <% if friendship.friend_a.id == @user.id %>
+        <%= friendship.friend_b.first_name %> <%= friendship.friend_b.last_name %>
+      <% else %>
+        <%= friendship.friend_a.first_name %> <%= friendship.friend_a.last_name %>
+        <% end %>
+    </li>
+  <% end %>
+</div>
+
+<div>
+  <h2>Friend Requests</h2>
+  <h3>Sent</h3>
+  <% @user.friend_requests_as_requestor.each do |request| %>
+    <li>
+      <%= request.receiver.first_name %> <%= request.receiver.last_name %>
+      <%#= person.first_name %> <%#= person.last_name %> <button>Cancel Request</button>
+    </li>
+  <% end %>
+  <h3>Received</h3>
+  <% @user.friend_requests_as_receiver.each do |request| %>
+    <li>
+      <%= request.requestor.first_name %> <%= request.requestor.last_name %>
+      <button>Accept</button>
+      <button>Decline</button>
+    </li>
+  <% end %>
+  
+</div>

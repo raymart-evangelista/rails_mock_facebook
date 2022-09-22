@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   # get ':username', to: 'users#show', as: :user
 
+  resources :users, param: :username
+
   devise_for :users
 
   resources :users do
@@ -8,12 +10,6 @@ Rails.application.routes.draw do
       get :toggle_add_friend
     end
   end
-  # resources :users, only: [:show]
-  # devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
 
   authenticated :user do
     root "posts#index", as: :authenticated_root
