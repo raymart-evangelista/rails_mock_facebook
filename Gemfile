@@ -17,7 +17,6 @@ gem "bootsnap", require: false
 gem "devise"
 gem 'friendly_id', '~> 5.4.0'
 gem "cssbundling-rails"
-gem "tailwindcss-rails", "~> 2.0"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
@@ -36,5 +35,3 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
-
-
