@@ -1,22 +1,3 @@
-<div>
-  <h1>Notificaitons</h1>
-  <div>
-    <% if @user.friend_requests_as_receiver.count > 0 %>
-      <h2>You have <%= @user.friend_requests_as_receiver.count %> friend request<%= @user.friend_requests_as_receiver.count == 1 ? "." : "s." %></h2>
-      <% @user.friend_requests_as_receiver.each do |request| %>
-      <li>
-        <%= request.requestor.first_name %> <%= request.requestor.last_name %>
-        <%= button_to "Accept", accept_received_request_user_path(request.requestor.username), form: {style: 'display:inline-block;'}, method: :get %>
-        <%= button_to "Decline", decline_received_request_user_path(request.requestor.username), form: {style: 'display:inline-block;'}, method: :get %>
-      </li>
-      <% end %>
-    <% else %>
-      <h2>No new friend requests from other people.</h2>
-    <% end %>
-  </div>
-</div>
-
-<%# Show addable friends %>
 <% if @user.addable_friends.count > 0 %>
   <div>
     <h2>Add a new friend</h2>
@@ -30,14 +11,23 @@
   <h2>No new friends to add</h2>
 <% end %>
 
-
-<%# Show sent friend requests %>
 <div>
+  <h2>Friend Requests</h2>
   <h3>Sent</h3>
   <% @user.friend_requests_as_requestor.each do |request| %>
     <li>
       <%= request.receiver.first_name %> <%= request.receiver.last_name %>
       <%= button_to "Cancel Request", cancel_friend_request_user_path(request.receiver.username), form: {style: 'display:inline-block;'}, method: :get %>
+      
     </li>
   <% end %>
+  <h3>Received</h3>
+  <% @user.friend_requests_as_receiver.each do |request| %>
+    <li>
+      <%= request.requestor.first_name %> <%= request.requestor.last_name %>
+      <%= button_to "Accept", accept_received_request_user_path(request.requestor.username), form: {style: 'display:inline-block;'}, method: :get %>
+      <%= button_to "Decline", decline_received_request_user_path(request.requestor.username), form: {style: 'display:inline-block;'}, method: :get %>
+    </li>
+  <% end %>
+  
 </div>
