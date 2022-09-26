@@ -1,47 +1,51 @@
-<div class="whole-page">
-  <div class="top-content grid grid-cols-2 bg-gray-200">
-    <div class="">
+<div class="whole-page h-screen">
+  <div class="top-content h-3/5 grid grid-cols-2 bg-gray-200">
+    <div class="left self-center justify-self-end w-1/2">
+      <h1 class="text-blue-600 font-bold text-5xl">mock facebook</h1>
+      <p class="text-3xl">Connect with your friends and the world around you on MockFacebook.</p>
+    </div>
 
-      <div class="left w-1/2">
-        <h1 class="text-blue-600 font-bold text-5xl">mock facebook</h1>
-        <p class="text-3xl">Connect with your friends and the world around you on MockFacebook.</p>
-      </div>
-
-      <div class="right card w-1/2">
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="right w-1/3 h-fit card self-center">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="grid gap-4">
           <%= render "devise/shared/error_messages", resource: resource %>
-          <div class="field">
-            <%#= f.label :email, class: "block text-sm font-medium text-slate-700" %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email or username",
-            class: "field-primary
-            invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500
-            peer" %>
-            <p class="mt-2 invisible peer-invalid:visible text-pink-600 text-sm">Please provide a valid email address</p>
-          </div>
-          <div class="field">
-            <%#= f.label :password %><br />
-            <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password",
-            class: "field-primary" %>
-          </div>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email or username",
+          class: "field-primary
+          invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+          peer" %>
+          <%# <p class="mt-2 invisible peer-invalid:visible text-pink-600 text-sm">Please provide a valid email address</p> %>
+          <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password",
+          class: "field-primary" %>
+
+          <%= f.submit "Log in", class: "rounded text-white font-semibold px-8 py-3 text-xl
+          bg-blue-500 hover:bg-blue-600 active:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300" %>
+
+          <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+            <%= link_to "Forgot your password?", new_password_path(resource_name),
+            class: "text-blue-500 font-semibold text-sm text-center" %>
+          <% end %>
+
+          <hr class="border border-red">
+
+          <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+            <%= link_to "Create new account", new_registration_path(resource_name), class: "bg-green-500 hover:bg-green-700
+            rounded text-white font-bold p-4 text-lg text-center w-fit justify-self-center" %>
+          <% end %>
           <%# if devise_mapping.rememberable? %>
             <%# <div class="field"> %>
               <%#= f.check_box :remember_me %>
               <%#= f.label :remember_me %>
             <%# </div> %>
           <%# end %>
-          <div class="actions">
-            <%= f.submit "Log in", class: "rounded text-white font-semibold px-8 py-3
-            bg-blue-500 hover:bg-blue-600 active:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300" %>
-          </div>
-        <% end %>
-        <%= render "devise/shared/links" %>
-      </div>
-
+        </div>
+      <% end %>
     </div>
 
   </div>
 
-  <div class="bottom-content bg-white text-gray-400 text-sm p-5">
-    <p>raymart evangelista 2022</p>
+  <div class="bottom-content h-2/5 bg-white text-gray-400 text-sm p-5">
+    <a href="https://github.com/raymart-evangelista/rails_mock_facebook">
+      <p class="text-center">raymart evangelista 2022</p>
+    </a>
   </div>
 </div>
