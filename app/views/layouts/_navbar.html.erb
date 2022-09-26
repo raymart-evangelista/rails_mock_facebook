@@ -1,0 +1,28 @@
+<nav class="flex justify-center space-x-4 p-3">
+  <%= link_to "Home", root_url, method: :get,
+    class: "font-bold px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900"%>
+  <%= link_to "My profile", user_url(current_user.username), method: :get,
+    class: "font-bold px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900"%>
+  <%= link_to "Log out", destroy_user_session_path, method: :delete, 'data-turbo-method': :delete,
+    class: "font-bold px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900"%>
+</nav>
+
+<%# <div>
+  <button class="block h-10 w-10 rounded-full overflow-hidden border-2 border-gray-600
+    focus:outline-none focus:border-blue-500">
+    <img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1660455559502-8f71b47443c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2574&q=80" alt="profile photo">
+  </button>
+  <div class="mt-2 py-2 w-48 bg-slate-200 rounded-lg shadow-xl">
+    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">Account settings</a>
+    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">Support</a>
+    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">Sign out</a>
+  </div>
+</div> %>
+
+
+
+
+<%#= current_user.email %>
+<%#= button_to "Home", root_url, method: :get %>
+<%#= button_to "My profile", user_url(current_user.username), method: :get %>
+<%#= button_to "Log out", destroy_user_session_path, method: :delete, 'data-turbo-method': :delete %>

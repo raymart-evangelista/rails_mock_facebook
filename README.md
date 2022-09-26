@@ -13,3 +13,4 @@
 - [Add first name and last name to Devise](https://github.com/raymart-evangelista/rails_private_events)
 - [Reusing Styles with tailwindcss](https://tailwindcss.com/docs/reusing-styles#extracting-classes-with-apply)
 - [tailwindcss colors](https://tailwindcss.com/docs/customizing-colors)
+- [Dropdown menu](https://www.youtube.com/watch?v=TQFW3AtrDw4)
