@@ -5,6 +5,21 @@
     class: "font-bold px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900"%>
   <%= link_to "Log out", destroy_user_session_path, method: :delete, 'data-turbo-method': :delete,
     class: "font-bold px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900"%>
+
+  <div data-controller="dropdown">
+    <button data-action="click->dropdown#toggle" data-dropdown-target="drop"
+      class="font-bold px-3 py-2 text-blue-700 rounded-lg hover:bg-slate-100 hover:text-slate-900">Notifications</button>
+    <button data-action="click->dropdown#overlay" data-dropdown-target="full"
+      class="fixed inset-0 h-full w-full bg-black opacity-50 cursor-clickable" hidden></button>
+    <div data-dropdown-target="output" class="absolute" hidden>
+      <ul class="card">
+        <li>
+          <%= render "users/friend_requests" %>
+        </li>
+      </ul>
+    </div>
+  </div>
+
 </nav>
 
 <%# <div>
