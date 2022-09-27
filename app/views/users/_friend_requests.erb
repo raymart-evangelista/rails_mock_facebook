@@ -1,10 +1,10 @@
 <% if current_user.friend_requests_as_receiver.count > 0 %>
-  <h2>You have <%= current_user.friend_requests_as_receiver.count %> friend request<%= current_user.friend_requests_as_receiver.count == 1 ? "." : "s." %></h2>
+  <h2>You have <b><%= current_user.friend_requests_as_receiver.count %></b> friend request<%= current_user.friend_requests_as_receiver.count == 1 ? "." : "s." %></h2>
   <% current_user.friend_requests_as_receiver.each do |request| %>
   <li>
     <%= request.requestor.first_name %> <%= request.requestor.last_name %>
-    <%= button_to "Accept", accept_received_request_user_path(request.requestor.username), form: {style: 'display:inline-block;'}, method: :get %>
-    <%= button_to "Decline", decline_received_request_user_path(request.requestor.username), form: {style: 'display:inline-block;'}, method: :get %>
+    <%= button_to "Accept", accept_received_request_user_path(request.requestor.username), class: "btn-default p-1 bg-green-500 hover:bg-green-600 active:bg-green-700 focus:outline-none focus:ring focus:ring-green-300", form: {style: 'display:inline-block;'}, method: :get %>
+    <%= button_to "Decline", decline_received_request_user_path(request.requestor.username), class: "btn-default p-1 bg-red-500 hover:bg-red-600 active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300", form: {style: 'display:inline-block;'}, method: :get %>
   </li>
   <% end %>
 <% else %>
