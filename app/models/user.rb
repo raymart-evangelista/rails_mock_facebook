@@ -5,6 +5,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   validates :username, presence: true, uniqueness: { case_sensitive: false }
   has_many :posts
+  has_many :likes
 
   # has_many :friendship_list, foreign_key: :user_id, class_name: "Friendship"
   # has_many :friends, through: :friendship_list

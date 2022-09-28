@@ -1,0 +1,7 @@
+<%= form_with model: post, data: { turbo: false } do |f| %>
+  <div class="card w-fit grid gap-3">
+    <p class="text-center font-bold">Create post</p>
+    <%= f.text_area :content, size: "50x10", placeholder: "What's on your mind, #{current_user.first_name}?" %>
+    <button class="btn-default bg-blue-500 hover:bg-blue-600 p-2">Post</button>
+  </div>
+<% end %>
