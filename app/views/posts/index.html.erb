@@ -5,7 +5,12 @@
     <div class="card w-2/5 griddivide-y">
       <div class="text-base"><%= post.content %></div>
       <div class="font-light text-sm italic text-gray-500">Posted by <%= post.user.first_name %> <%= post.user.last_name %> on <%= post.created_at.to_fs(:long) %></div>
-      <button class="hover:bg-gray-100">Like</button>
+      <div>Liked by <%= post.likes.count %> users</div>
+      <% if post.likes.where(user_id: current_user.id).exists? %>
+        <div class="justify-self-end"><%= button_to "Unlike", unlike_post_path(post), class: "btn-default p-1 font-light text-sm bg-red-500 hover:bg-red-600 active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300", form: {style: 'display:inline-block;'}, method: :get %></div>
+      <% else %>
+        <div class="justify-self-end"><%= button_to "Like", like_post_path(post), class: "btn-default p-1 font-light text-sm bg-green-500 hover:bg-green-600 active:bg-green-700 focus:outline-none focus:ring focus:ring-green-300", form: {style: 'display:inline-block;'}, method: :get %></div>
+      <% end %>
       <button class="hover:bg-gray-100">Comment</button>
     </div>
   <% end %>

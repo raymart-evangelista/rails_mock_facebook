@@ -1,5 +1,18 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
+
+  def like
+    @post = Post.find(params[:id])
+    Like.create!(user_id: current_user.id, post_id: @post.id)
+    redirect_to root_url, notice: "Post liked."
+  end
+
+  def unlike
+    @post = Post.find(params[:id])
+    Like.destroy_by(user_id: current_user.id, post_id: @post.id)
+    redirect_to root_url, notice: "Post unliked."
+  end
+
   def index
     @posts = Post.all.reverse
     @users = User.all
@@ -33,7 +46,7 @@ class PostsController < ApplicationController
     if @post.update(params)
       redirect_to root_path
     else
-      render :eidt, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 

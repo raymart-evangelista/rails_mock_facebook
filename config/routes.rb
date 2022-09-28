@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   # resources :users, param: :username, only: [:show]
-  resources :posts, only: [:new, :create, :index]
+  resources :posts, only: [:new, :create, :index] do
+    member do
+      get :like
+      get :unlike
+    end
+  end
   get ':username', to: 'users#show', as: :user
   # resources :users, param: :username, as: :user
 
