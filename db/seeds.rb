@@ -77,6 +77,18 @@ Friendship.create!([{
   friend_b_id: 6
 }])
 
+Post.create!([{
+  title: "I saw a butterfly today!",
+  content: "It was yellow and very pretty to say the least!",
+  user_id: "1"
+},
+{
+  title: "This is what I ate today..",
+  content: "I ate birria and pastor tacos for lunch. For dinner, I ate air fried chicken and protein pancakes.",
+  user_id: "2"
+}])
+
 p "Created #{User.count} users"
 p "Created #{FriendRequest.count} friend requests"
-p "Created #{Friendship.count} friendship objects"
+p "Created #{Friendship.count} friendships"
+p "Created #{Post.count} posts"
