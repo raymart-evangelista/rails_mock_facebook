@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   # resources :users, param: :username, only: [:show]
+  resources :posts, only: [:new, :create, :index]
   get ':username', to: 'users#show', as: :user
   # resources :users, param: :username, as: :user
 
@@ -13,6 +14,8 @@ Rails.application.routes.draw do
       get :decline_received_request
     end
   end
+
+  
 
   authenticated :user do
     root "posts#index", as: :authenticated_root

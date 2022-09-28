@@ -1,5 +1,6 @@
 <div class="flex flex-col items-center gap-5">
-  <button class="card font-bold text-xl w-2/5 text-center hover:bg-green-500 hover:text-white">Create a new post</button>
+  <%# <button class="card font-bold text-xl w-2/5 text-center hover:bg-green-500 hover:text-white">Create a new post</button> %>
+  <%= button_to "Create a new post", new_post_path, method: :get, class: "card font-bold text-xl w-full text-center hover:bg-green-500 hover:text-white" %>
   <% @posts.each do |post| %>
     <div class="card w-2/5 grid gap-3 hover:bg-gray-100">
       <div class="font-bold text-xl"><%= post.title %></div>
