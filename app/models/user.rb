@@ -6,6 +6,7 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: { case_sensitive: false }
   has_many :posts
   has_many :likes
+  has_many :comments
 
   # has_many :friendship_list, foreign_key: :user_id, class_name: "Friendship"
   # has_many :friends, through: :friendship_list
@@ -18,6 +19,12 @@ class User < ApplicationRecord
 
   def friends
     Friendship.where("friend_a_id = ? OR friend_b_id = ?", self.id, self.id)
+  end
+
+  def friends_ids
+    curr_friend_ids = friends.pluck(:friend_a_id) + friends.pluck(:friend_b_id)
+    curr_friend_ids.delete(self.id)
+    curr_friend_ids
   end
 
   def unaddable_ids

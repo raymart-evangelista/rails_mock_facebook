@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # resources :users, param: :username, only: [:show]
-  resources :posts, only: [:new, :create, :index] do
+  resources :posts, only: [:new, :create, :index, :show] do
+    resources :comments
     member do
       get :like
       get :unlike
