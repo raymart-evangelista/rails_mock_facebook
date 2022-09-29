@@ -15,7 +15,9 @@ gem "redis", "~> 4.0"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 gem "devise"
+gem "tailwindcss-rails", "~> 2.0"
 gem 'friendly_id', '~> 5.4.0'
+gem 'gravtastic'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
@@ -35,4 +37,3 @@ group :test do
   gem "webdrivers"
 end
 
-gem "tailwindcss-rails", "~> 2.0"

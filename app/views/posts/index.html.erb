@@ -4,7 +4,7 @@
   <% @posts_by_friends.each do |post| %>
     <% @post = post %>
     <div class="card w-2/5 grid gap-1">
-      <div class="font-light text-sm italic text-gray-500 my-2">Posted by <%= @post.user.first_name %> <%= @post.user.last_name %> on <%= @post.created_at.to_fs(:long) %></div>
+      <div class="font-light text-sm italic text-gray-500 my-2"><%= image_tag post.user.gravatar_url, class: "inline rounded-full" %> Posted by <%= @post.user.first_name %> <%= @post.user.last_name %> on <%= @post.created_at.to_fs(:long) %></div>
       <div class="text-lg my-2"><%= link_to @post.content, post %></div>
       <div class="font-light text-sm italic text-gray-500">Liked by <%= @post.likes.count %> users</div>
       <div class="font-light text-sm italic text-gray-500">There are <%= post.comments.count %> comments on this post.</div>

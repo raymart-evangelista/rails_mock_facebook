@@ -5,6 +5,8 @@
 - [guard](https://github.com/guard/guard) for testing
 - [guard-rspec](https://github.com/guard/guard-rspec) for testing
 - [tailwindcss-rails]()
+- [friendly_id](https://github.com/norman/friendly_id)
+- [gravtastic](https://github.com/chrislloyd/gravtastic)
 
 # RESOURCES
 - [Show a devise log in or sign up forms in another page](https://pablofernandez.tech/2016/04/26/show-a-devise-log-in-or-sign-up-forms-in-another-page/)
