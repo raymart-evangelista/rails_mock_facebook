@@ -14,11 +14,12 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all.reverse
-    @users = User.all
+    # @posts = Post.all.reverse
+    # @users = User.all
+
     # do sql search for friends posts--posts that have a user_id of friend ids
     @friends_self_ids = current_user.friends_ids << current_user.id
-    @posts_by_friends = Post.all.where(id: @friends_self_ids)
+    @posts_by_friends = Post.all.where(user_id: @friends_self_ids)
     # do sql search for current users posts
   end
 
@@ -34,7 +35,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params.merge({ user_id: current_user.id }))
 
     if @post.save
-      redirect_to root_path
+      redirect_to post_path(@post)
     else
       render :new, status: :unprocessable_entity
     end
