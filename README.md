@@ -14,3 +14,4 @@
 - [Reusing Styles with tailwindcss](https://tailwindcss.com/docs/reusing-styles#extracting-classes-with-apply)
 - [tailwindcss colors](https://tailwindcss.com/docs/customizing-colors)
 - [Dropdown menu](https://www.youtube.com/watch?v=TQFW3AtrDw4)
+- [footer](https://flowbite.com/docs/components/footer/)
