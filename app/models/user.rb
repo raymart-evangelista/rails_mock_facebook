@@ -5,6 +5,8 @@ class User < ApplicationRecord
   friendly_id :username, use: :slugged
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :omniauthable, omniauth_providers: %i[facebook]
+
   validates :username, presence: true, uniqueness: { case_sensitive: false }
   has_many :posts
   has_many :likes
