@@ -5,7 +5,6 @@ class User < ApplicationRecord
   friendly_id :username, use: :slugged
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :omniauthable, omniauth_providers: %i[facebook]
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }
   has_many :posts
@@ -59,5 +58,6 @@ class User < ApplicationRecord
   has_many :friend_requests_as_receiver, foreign_key: :receiver_id, class_name: :FriendRequest
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: %i[facebook]
 end
