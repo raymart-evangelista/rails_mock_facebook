@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get ':username', to: 'users#show', as: :user
   # resources :users, param: :username, as: :user
 
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
 
   resources :users do
     member do

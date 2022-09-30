@@ -11,14 +11,12 @@ class User < ApplicationRecord
   has_many :likes
   has_many :comments
 
-  # has_many :friendship_list, foreign_key: :user_id, class_name: "Friendship"
-  # has_many :friends, through: :friendship_list
+  has_many :friend_requests_as_requestor, foreign_key: :requestor_id, class_name: :FriendRequest
+  has_many :friend_requests_as_receiver, foreign_key: :receiver_id, class_name: :FriendRequest
 
-  # has_many :friendship_list, foreign_key: :friend_a_id, class_name: :Friendship
-  # has_many :friends, through: :friendship_list
-
-  # User.all_friends(user)
-  # scope :all_friends, ->(user) { Friendship.where("friend_a_id = ? OR friend_b_id = ?", user.id, user.id)}
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: %i[facebook]
 
   def friends
     Friendship.where("friend_a_id = ? OR friend_b_id = ?", self.id, self.id)
@@ -47,17 +45,13 @@ class User < ApplicationRecord
     User.where.not(id: self.unaddable_ids << self.id)
   end
 
-  # has_many :friendships, foreign_key: :friend_a_id, class_name: :Friendship
-  # has_many :friendships, -> { where("friend_a_id = ? OR friend_b_id = ?", user.id, user.id) }
-  # has_many :friends, through: :friendships, source: :Friendship
-
-  # has_many :friendships, ->(user) { where("friend_a_id = ? OR friend_b_id = ?", user.id, user.id) }
-  # has_many :friends, through: :friendships
-
-  has_many :friend_requests_as_requestor, foreign_key: :requestor_id, class_name: :FriendRequest
-  has_many :friend_requests_as_receiver, foreign_key: :receiver_id, class_name: :FriendRequest
-
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :omniauthable, omniauth_providers: %i[facebook]
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0,20]
+      user.first_name = auth.info.first_name
+      user.last_name = auth.info.last_name
+      # user.image = auth.info.image
+    end
+  end
 end
