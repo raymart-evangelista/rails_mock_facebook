@@ -24,3 +24,40 @@
 <div>
   <h2>Posts</h2>
 </div>
+
+<% @post = @user.posts.first %>
+
+<div class="flex flex-col items-center gap-5">
+  <div class="card w-2/5 grid gap-1">
+    <div class="font-light text-sm italic text-gray-500 my-2">Posted by <%= @post.user.first_name %> <%= @post.user.last_name %> on <%= @post.created_at.to_fs(:long) %></div>
+    <div class="text-lg my-2"><%= link_to @post.content, post_path(@post) %></div>
+    <% if @post.likes.where(user_id: current_user.id).exists? %>
+      <div class=""><%= button_to "Unlike", unlike_post_path(@post), class: "btn-default p-1 font-light text-sm bg-red-500 hover:bg-red-600 active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300", form: {style: 'display:inline-block;'}, method: :get %></div>
+    <% else %>
+      <div class=""><%= button_to "Like", like_post_path(@post), class: "btn-default p-1 font-light text-sm bg-green-500 hover:bg-green-600 active:bg-green-700 focus:outline-none focus:ring focus:ring-green-300", form: {style: 'display:inline-block;'}, method: :get %></div>
+    <% end %>
+
+    <div class="font-light text-sm italic text-gray-500">Liked by <%= @post.likes.count %> users</div>
+
+    <% if @post.comments.exists? %>
+      <% @post.comments.each do |comment| %>
+        <div><%= comment.content %></div>
+      <% end %>
+    <% end %>
+
+    <div data-controller="dropdown">
+      <button data-action="click->dropdown#toggle" data-dropdown-target="drop"
+      class="font-bold px-3 py-2 text-blue-700 rounded-lg hover:bg-slate-100 hover:text-slate-900">Comment</button>
+      <button data-action="click->dropdown#overlay" data-dropdown-target="full"
+    class="fixed inset-0 h-full w-full bg-black opacity-10 cursor-clickable" hidden></button>
+      <div data-dropdown-target="output" class="absolute" hidden>
+        <ul class="card">
+          <li>
+            <%= render "comments/form", locals: { post: @post } %>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -4,7 +4,7 @@
     <h2>Add a new friend</h2>
     <% @user.addable_friends.each do |person| %>
       <li>
-        <%= person.first_name %> <%= person.last_name %> <%= button_to "Add Friend", send_friend_request_user_path(person.username), form: {style: 'display:inline-block;'}, method: :get %>
+        <%= image_tag person.gravatar_url, class: "inline rounded-full" %> <%= person.first_name %> <%= person.last_name %> <%= button_to "Add Friend", send_friend_request_user_path(person.username), form: {style: 'display:inline-block;'}, method: :get %>
       </li>
     <% end %>
   </div>
