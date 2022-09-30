@@ -18,6 +18,8 @@ gem "devise"
 gem "tailwindcss-rails", "~> 2.0"
 gem 'friendly_id', '~> 5.4.0'
 gem 'gravtastic'
+gem 'omniauth-facebook'
+gem 'omniauth-rails_csrf_protection'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
