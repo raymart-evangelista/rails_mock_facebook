@@ -22,11 +22,12 @@
 </div>
 
 <div>
-  <h2>Posts</h2>
+  
 </div>
 
 <% @posts = @user.posts %>
 <div class="flex flex-col gap-5 my-5 items-center">
+  <h2 class="text-xl font-bold">Posts</h2>
   <% @posts.each do |post| %>
     <% @post = post %>
     <div class="card w-2/5 grid gap-1">
