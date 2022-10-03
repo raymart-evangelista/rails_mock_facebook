@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     # create a sent request in FreindRequest
     FriendRequest.create!(requestor_id: current_user.id, receiver_id: @person.id)
     # redirect, page should show that the Friend request was sent
-    redirect_to user_url(current_user.username), notice: "Friend request sent."
+    redirect_to "/users/index", notice: "Friend request sent."
   end
 
   def cancel_friend_request
