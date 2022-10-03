@@ -6,7 +6,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
-  # validates :username, presence: true, uniqueness: { case_sensitive: false }
+  validates :username, presence: true, uniqueness: { case_sensitive: false }
   has_many :posts
   has_many :likes
   has_many :comments
@@ -53,9 +53,26 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0,20]
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
-      # user.first_name = auth.info.first_name
-      # user.last_name = auth.info.last_name
+      user.first_name = auth.info.name.split(' ').first
+      user.last_name = auth.info.name.split(' ').last
+      new_username = (user.first_name[0] + user.last_name).downcase
+      user.username = new_username
+      while User.find_by(username: new_username).present?
+        binding.pry
+        random_digits = rand(1e1...1e4).to_i.to_s.to_str
+        new_username = user.username + random_digits
+      end
+      user.username = new_username
       # user.image = auth.info.image
     end
   end
+
+  # def ensure_login_uniqueness
+  #   # if no username was given OR if the username already exists in the database, generate a unique username
+
+  #   # if a username was given -> check if it's in the database -> 
+  #   if self.username.blank? || User.find_by(username: self.username).nil?
+  #     binding.pry
+  #   end
+  # end
 end

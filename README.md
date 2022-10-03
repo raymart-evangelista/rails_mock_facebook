@@ -17,3 +17,4 @@
 - [tailwindcss colors](https://tailwindcss.com/docs/customizing-colors)
 - [Dropdown menu](https://www.youtube.com/watch?v=TQFW3AtrDw4)
 - [footer](https://flowbite.com/docs/components/footer/)
+- [generating unique usernames](https://stackoverflow.com/questions/9905418/generate-unique-username-omniauth-devise)

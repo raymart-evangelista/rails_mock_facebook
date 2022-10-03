@@ -2,10 +2,10 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   skip_before_action :verify_authenticity_token, only: :facebook
 
   def facebook
-    # binding.pry
     # first create a username, enter first name, last name as well
     # render "devise/registrations/edit"
     @user = User.from_omniauth(request.env["omniauth.auth"])
+    binding.pry
 
     if @user.persisted?
       sign_in_and_redirect @user, event: :authentication
