@@ -6,7 +6,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
-  validates :username, presence: true, uniqueness: { case_sensitive: false }
+  # validates :username, presence: true, uniqueness: { case_sensitive: false }
   has_many :posts
   has_many :likes
   has_many :comments
@@ -47,10 +47,14 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      # note that the block executes ONLY if a new instance is being created
+      # see https://apidock.com/rails/ActiveRecord/Relation/first_or_create
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
-      user.first_name = auth.info.first_name
-      user.last_name = auth.info.last_name
+      user.oauth_token = auth.credentials.token
+      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+      # user.first_name = auth.info.first_name
+      # user.last_name = auth.info.last_name
       # user.image = auth.info.image
     end
   end
