@@ -31,6 +31,7 @@ group :development do
   gem "guard"
   gem "guard-rspec", require: false
   gem "pry-byebug"
+  gem "letter_opener"
 end
 
 group :test do
