@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
   # resources :users, param: :username, only: [:show]
   resources :posts, only: [:new, :create, :index, :show] do
+    collection do
+      get :discover
+    end
     resources :comments
     member do
       get :like
       get :unlike
     end
   end
+
   get ':username', to: 'users#show', as: :user
   get '/users/index', to: 'users#index', as: :users_path
   # resources :users, param: :username, as: :user

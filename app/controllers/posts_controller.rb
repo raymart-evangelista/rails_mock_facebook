@@ -1,6 +1,10 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
 
+  def discover
+    @posts = Post.all.order("created_at DESC")
+  end
+
   def like
     @post = Post.find(params[:id])
     Like.create!(user_id: current_user.id, post_id: @post.id)
