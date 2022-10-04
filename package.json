@@ -1,0 +1,16 @@
+{
+  "name": "mock_facebook",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:raymart-evangelista/rails_mock_facebook.git",
+  "author": "raymart-evangelista <raymart.s.evangelista@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "autoprefixer": "^10.4.12",
+    "postcss": "^8.4.17",
+    "tailwindcss": "^3.1.8"
+  },
+  "scripts": {
+    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"
+  }
+}
