@@ -6,6 +6,11 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
+  after_create :send_signup_email
+  def send_signup_email
+    SignupMailer.signup_email(self).deliver_now!
+  end
+
   validates :username, presence: true, uniqueness: { case_sensitive: false }
   has_many :posts
   has_many :likes

@@ -20,3 +20,4 @@
 - [generating unique usernames](https://stackoverflow.com/questions/9905418/generate-unique-username-omniauth-devise)
 - [Order by DESC](https://www.chrisjmendez.com/2016/12/31/rails-order-by-desc/)
 - [Custom routes](https://stackoverflow.com/questions/42464328/how-to-add-a-single-custom-route-in-rails)
+- [Devise send email after signup](https://stackoverflow.com/questions/17479864/rails-devise-send-user-email-after-sign-up-create)
