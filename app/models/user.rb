@@ -63,7 +63,6 @@ class User < ApplicationRecord
       new_username = (user.first_name[0] + user.last_name).downcase
       user.username = new_username
       while User.find_by(username: new_username).present?
-        binding.pry
         random_digits = rand(1e1...1e4).to_i.to_s.to_str
         new_username = user.username + random_digits
       end
