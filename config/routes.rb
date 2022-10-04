@@ -11,8 +11,8 @@ Rails.application.routes.draw do
     end
   end
 
-  get ':username', to: 'users#show', as: :user
   get '/users/index', to: 'users#index', as: :users_path
+  get ':username', to: 'users#show', as: :user
   # resources :users, param: :username, as: :user
 
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
