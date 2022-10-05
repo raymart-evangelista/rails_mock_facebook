@@ -3,6 +3,7 @@ class User < ApplicationRecord
   extend FriendlyId
   gravtastic size: 40
   friendly_id :username, use: :slugged
+  validates :username, presence: true, uniqueness: { case_sensitive: false }
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
@@ -11,7 +12,6 @@ class User < ApplicationRecord
     SignupMailer.signup_email(self).deliver_now!
   end
 
-  validates :username, presence: true, uniqueness: { case_sensitive: false }
   has_many :posts
   has_many :likes
   has_many :comments
