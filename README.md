@@ -35,3 +35,6 @@
 - [Order by DESC](https://www.chrisjmendez.com/2016/12/31/rails-order-by-desc/)
 - [Custom routes](https://stackoverflow.com/questions/42464328/how-to-add-a-single-custom-route-in-rails)
 - [Devise send email after signup](https://stackoverflow.com/questions/17479864/rails-devise-send-user-email-after-sign-up-create)
+- [Production action mailer with Heroku and GMAIL](https://hixonrails.com/ruby-on-rails-tutorials/ruby-on-rails-action-mailer-configuration/)
+  - [Net::SMTPAuthenticationError (530-5.7.0 Authentication Required ERROR FIX--](https://stackoverflow.com/questions/44872748/gmail-smtp-netsmtpauthenticationerror-530-5-5-1-authentication-required-lea)
+  - [Setting up ENV vars, config vars with Heroku](https://devcenter.heroku.com/articles/config-vars)
